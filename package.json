@@ -17,6 +17,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.0",
     "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
@@ -24,9 +25,17 @@
     "nodemon": "^3.1.6"
   },
   "nodemonConfig": {
-    "watch": ["src", ".",".env"],
+    "watch": [
+      "src",
+      ".",
+      ".env"
+    ],
     "ext": "js,json,env",
-    "ignore": ["node_modules",".git","logs"],
+    "ignore": [
+      "node_modules",
+      ".git",
+      "logs"
+    ],
     "exec": "node server.js"
   }
 }
