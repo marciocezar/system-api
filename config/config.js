@@ -8,7 +8,7 @@ if (process.env.DB_TYPE === 'sqlite'){
             storage: process.env.DB_STORAGE,
         }
     );
-} else{
+} else {
     sequelize = new Sequelize(
         process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD,{
             host: process.env.DB_HOST,

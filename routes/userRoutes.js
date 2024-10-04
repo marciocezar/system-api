@@ -75,7 +75,7 @@ router.get('/users', authenticateToken, userController.listUsers);
 /**
  * @swagger
  * /users/{id}/activate:
- *   put:
+ *   patch:
  *     summary: Activate a user
  *     tags: [Users]
  *     security:
@@ -95,12 +95,12 @@ router.get('/users', authenticateToken, userController.listUsers);
  *       500:
  *         description: Some server error
  */
-router.put('/users/:id/activate', authenticateToken, userController.activateUser);
+router.patch('/users/:id/activate', authenticateToken, userController.activateUser);
 
 /**
  * @swagger
  * /users/{id}/deactivate:
- *   put:
+ *   patch:
  *     summary: Deactivate a user
  *     tags: [Users]
  *     security:
@@ -120,5 +120,41 @@ router.put('/users/:id/activate', authenticateToken, userController.activateUser
  *       500:
  *         description: Some server error
  */
-router.put('/users/:id/deactivate', authenticateToken, userController.deactivateUser);
+router.patch('/users/:id/deactivate', authenticateToken, userController.deactivateUser);
+
+/**
+ * @swagger
+ * /users/{id}/password:
+ *   patch:
+ *     summary: Update a user's password
+ *     tags: [Users]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: The id of the user to update the password
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 description: The new password for the user
+ *     responses:
+ *       200:
+ *         description: Password updated successfully
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Some server error
+ */
+router.patch('/users/:id/password', authenticateToken, userController.updatePassword);
+
 module.exports = router;
