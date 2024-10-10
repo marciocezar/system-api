@@ -67,3 +67,21 @@ exports.listUsers = async (req, res) => {
       res.status(500).send(error.message);
     }
   };
+
+  exports.updateUser = async (req, res) => {
+    try {
+      const {id} = req.params;
+      const {username, loginuser} = req.body;
+      const user = await User.findOne({where: {id: id}});
+      if (user) {
+        user.username = username;
+        user.loginuser = loginuser;
+        await user.save();
+        res.status(200).json({ message: 'User updated successfuly!'});
+      } else {
+        res.status(404).send('User not found');
+      }
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  };
