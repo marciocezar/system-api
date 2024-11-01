@@ -1,3 +1,4 @@
+// Verifies the token and authenticates the user, if expired token reloads the token.
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 

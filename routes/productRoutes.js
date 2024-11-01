@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
-const authenticateToken = require('../middlewares/authMiddleware');
+const authenticateToken = require('../middlewares/authMiddlewares');
 
 /**
  * @swagger
