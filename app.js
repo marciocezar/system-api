@@ -5,6 +5,13 @@ const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const setupSwagger = require('./swagger/swagger');
+const cors = require('cors');
+
+app.use(cors({
+    origin:'*',
+    methods: ['GET', 'POST', 'DELETE', 'PATCH', 'PUT'],
+    allowedHeaders: ['Content-type','Authorization']
+}));
 
 app.use(express.json());
 setupSwagger(app);
